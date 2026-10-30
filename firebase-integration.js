@@ -16,25 +16,39 @@
   /* ---------- Interfaz de acceso ---------- */
   var css = document.createElement("style");
   css.textContent = [
-    ".ssAuth{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:18px;background:radial-gradient(circle at 80% 0%,rgba(49,151,196,.35),transparent 40%),linear-gradient(180deg,#111036,#080724);overflow:auto}",
+    ".ssAuth{--k:max(calc(100vw/1600),calc(100vh/811));position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:12px;background:#cfdaea url(img/login-bg.jpg) center/cover no-repeat;overflow:auto}",
     ".ssAuth[hidden]{display:none}",
-    ".ssAuthCard{width:min(420px,100%);background:#fff;border-radius:24px;padding:26px 22px;box-shadow:0 30px 80px rgba(0,0,0,.35)}",
-    ".ssAuthCard h2{margin:0;color:#080724;font-size:26px;letter-spacing:-.03em}",
-    ".ssSub{margin:4px 0 18px;color:#6C8094;font-size:14px}",
-    ".ssTabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;background:#EEF6FA;border:1px solid #D5E6EF;border-radius:14px;margin-bottom:16px}",
-    ".ssTabs button{border:0;background:transparent;border-radius:10px;min-height:40px;font-weight:700;color:#527089}",
-    ".ssTabs button.on{background:#fff;color:#080724;box-shadow:0 6px 16px rgba(8,7,36,.08)}",
-    ".ssAuthCard label{display:block;font-size:11px;font-weight:800;color:#5c6980;margin:12px 0 5px}",
-    ".ssAuthCard input{width:100%;border:1px solid #D4E6EF;border-radius:14px;padding:12px;font-size:16px;color:#14233A;outline:none}",
-    ".ssAuthCard input:focus{border-color:#3197c4;box-shadow:0 0 0 4px rgba(49,151,196,.12)}",
-    ".ssMsg{margin-top:12px;padding:10px 12px;border-radius:12px;font-size:13px;display:none}",
+    "@media (max-width:900px),(max-aspect-ratio:1/1){.ssAuth{--k:min(calc((100vw - 28px)/535),.82px);background-image:url(img/login-bg-m.jpg)}.ssAuthCard{background:rgba(255,255,255,.985) !important;transform:none !important}}",
+    ".ssAuthCard{width:calc(var(--k)*535);max-width:100%;box-sizing:border-box;margin:auto;transform:translateY(calc(var(--k)*8));background:linear-gradient(180deg,rgba(255,255,255,.97),rgba(246,250,255,.95));border:1px solid rgba(255,255,255,.8);border-radius:calc(var(--k)*38);padding:calc(var(--k)*52) calc(var(--k)*38) calc(var(--k)*52);box-shadow:0 calc(var(--k)*26) calc(var(--k)*70) rgba(22,45,80,.28)}",
+    ".ssLogo{display:block;margin:calc(var(--k)*2) auto calc(var(--k)*44);width:calc(var(--k)*160);height:auto}",
+    ".ssTabs{display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--k)*4);padding:calc(var(--k)*5);background:rgba(233,241,250,.9);border:calc(var(--k)*1.5) solid #d3e1f0;border-radius:calc(var(--k)*24);margin-bottom:calc(var(--k)*28)}",
+    ".ssTabs button{border:0;background:transparent;border-radius:calc(var(--k)*19);min-height:calc(var(--k)*50);font-size:max(15px,calc(var(--k)*21));font-weight:800;color:#5b7b9d;cursor:pointer}",
+    ".ssTabs button.on{background:#fff;color:#0c1a30;box-shadow:0 calc(var(--k)*6) calc(var(--k)*16) rgba(20,50,90,.12)}",
+    ".ssAuthCard label{display:block;font-size:max(13px,calc(var(--k)*18));font-weight:700;color:#2c3e55;margin:calc(var(--k)*14) 0 calc(var(--k)*7)}",
+    ".ssField{position:relative}",
+    ".ssField svg{position:absolute;left:calc(var(--k)*20);top:50%;width:calc(var(--k)*28);height:calc(var(--k)*28);min-width:18px;min-height:18px;transform:translateY(-50%);stroke:#2d4a6a;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}",
+    ".ssAuthCard input{width:100%;box-sizing:border-box;height:calc(var(--k)*58);min-height:44px;border:calc(var(--k)*1.5) solid #d3e1f0;border-radius:calc(var(--k)*20);padding:0 calc(var(--k)*18) 0 calc(var(--k)*64);font-size:max(16px,calc(var(--k)*21));color:#14233A;background:#fff;outline:none}",
+    ".ssAuthCard input::placeholder{color:#7f95ad}",
+    ".ssAuthCard input:focus{border-color:#2b90cf;box-shadow:0 0 0 calc(var(--k)*5) rgba(43,144,207,.16)}",
+    ".ssAuthCard #ssPass{padding-right:calc(var(--k)*62)}",
+    ".ssEye{position:absolute;right:calc(var(--k)*14);top:50%;transform:translateY(-50%);width:calc(var(--k)*40);height:calc(var(--k)*40);min-width:32px;min-height:32px;border:0;background:transparent;color:#2d4a6a;display:grid;place-items:center;cursor:pointer;border-radius:50%}",
+    ".ssEye svg{position:static;transform:none;width:calc(var(--k)*28);height:calc(var(--k)*28);min-width:18px;min-height:18px}",
+    ".ssEye:hover{background:#eef5fc}",
+    ".ssMsg{margin-top:calc(var(--k)*14);padding:calc(var(--k)*11) calc(var(--k)*14);border-radius:calc(var(--k)*14);font-size:max(13px,calc(var(--k)*16));display:none}",
     ".ssMsg.err{display:block;background:#FFF3F5;border:1px solid #F0D4D9;color:#9A3E4E}",
     ".ssMsg.ok{display:block;background:#EDF9F4;border:1px solid #D5EEE2;color:#236F52}",
-    ".ssBtn{width:100%;min-height:46px;border-radius:14px;font-weight:700;margin-top:14px;border:1px solid #D3E5EE;background:#fff;color:#080724}",
-    ".ssBtn.primary{border:0;background:linear-gradient(135deg,#3197c4,#207DA8);color:#fff}",
+    ".ssBtn{position:relative;width:100%;box-sizing:border-box;min-height:calc(var(--k)*58);border-radius:calc(var(--k)*20);font-weight:800;font-size:max(16px,calc(var(--k)*23));margin-top:calc(var(--k)*26);border:0;color:#fff;cursor:pointer}",
+    ".ssBtn.primary{background:linear-gradient(135deg,#2f95d2,#1b78b9);box-shadow:0 calc(var(--k)*10) calc(var(--k)*24) rgba(27,120,185,.34)}",
+    ".ssBtn.primary::after{content:'';position:absolute;right:calc(var(--k)*26);top:50%;width:calc(var(--k)*26);height:calc(var(--k)*26);min-width:16px;min-height:16px;transform:translateY(-50%);background:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h16M14 6l6 6-6 6'/%3E%3C/svg%3E\") center/contain no-repeat}",
+    ".ssAuth.reg .ssAuthCard{padding-top:calc(var(--k)*30);padding-bottom:calc(var(--k)*30)}",
+    ".ssAuth.reg .ssLogo{margin-bottom:calc(var(--k)*16);width:calc(var(--k)*130)}",
+    ".ssAuth.reg .ssTabs{margin-bottom:calc(var(--k)*14)}",
+    ".ssAuth.reg .ssLink{margin-top:calc(var(--k)*24)}",
+    ".ssBtn:hover{filter:brightness(1.05)}",
     ".ssBtn:disabled{opacity:.6;cursor:wait}",
-    ".ssLink{background:none;border:0;color:#176B90;font-weight:700;margin-top:12px;width:100%;text-align:center;font-size:13px}",
-    ".ssDivider{text-align:center;color:#8da0b3;font-size:12px;margin:14px 0 0}",
+    ".ssLink{background:none;border:0;color:#176B90;font-weight:800;margin-top:calc(var(--k)*50);width:100%;text-align:center;font-size:max(14px,calc(var(--k)*19));cursor:pointer}",
+    ".ssLink:hover{text-decoration:underline}",
+    ".ssAuthCard #ssLoading{color:#35557a;font-size:15px;text-align:center;padding:12px 0 6px}",
     ".ssUser{margin-top:auto;padding:12px;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:#D8EDFA;font-size:12px}",
     ".ssUser b{display:block;color:#fff;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}",
     ".ssUser button{margin-top:10px;width:100%;min-height:38px;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;font-weight:700}",
@@ -47,24 +61,23 @@
   overlay.id = "ssAuth";
   overlay.innerHTML =
     '<div class="ssAuthCard">' +
-    '<h2>SmartScanner</h2><p class="ssSub">Inventario inteligente del hogar</p>' +
-    '<div id="ssLoading" style="color:#527089;font-size:14px">Cargando…</div>' +
+    '<img class="ssLogo" src="img/logo-mark.png" alt="SmartScanner">' +
+    '<div id="ssLoading">Cargando…</div>' +
     '<div id="ssPanel" hidden>' +
     '<div class="ssTabs"><button type="button" data-t="login" class="on">Ingresar</button><button type="button" data-t="register">Crear cuenta</button></div>' +
     '<form id="ssForm" novalidate>' +
-    '<div id="ssNameWrap" hidden><label for="ssName">Nombre</label><input id="ssName" autocomplete="name" placeholder="Su nombre"></div>' +
-    '<label for="ssEmail">Correo electrónico</label><input id="ssEmail" type="email" autocomplete="email" placeholder="correo@ejemplo.com">' +
-    '<label for="ssPass">Contraseña</label><input id="ssPass" type="password" autocomplete="current-password" placeholder="Mínimo 6 caracteres">' +
+    '<div id="ssNameWrap" hidden><label for="ssName">Nombre</label><div class="ssField"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.6"></circle><path d="M4.5 20c.8-3.6 3.7-5.4 7.5-5.4s6.7 1.8 7.5 5.4"></path></svg><input id="ssName" autocomplete="name" placeholder="Su nombre"></div></div>' +
+    '<label for="ssEmail">Correo electrónico</label><div class="ssField"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"></rect><path d="m4 7 8 6 8-6"></path></svg><input id="ssEmail" type="email" autocomplete="email" placeholder="correo@ejemplo.com"></div>' +
+    '<label for="ssPass">Contraseña</label><div class="ssField"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9.5" rx="2.5"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg><input id="ssPass" type="password" autocomplete="current-password" placeholder="Mínimo 6 caracteres"><button type="button" class="ssEye" id="ssEye" aria-label="Mostrar u ocultar contraseña"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button></div>' +
     '<div class="ssMsg" id="ssMsg" role="alert"></div>' +
     '<button class="ssBtn primary" id="ssSubmit" type="submit">Ingresar</button>' +
     '</form>' +
-    '<div class="ssDivider">o</div>' +
-    '<button class="ssBtn" id="ssGoogle" type="button">Continuar con Google</button>' +
     '<button class="ssLink" id="ssForgot" type="button">¿Olvidó su contraseña?</button>' +
     '</div></div>';
   document.body.appendChild(overlay);
 
   function $(id) { return document.getElementById(id); }
+  $("ssEye").addEventListener("click", function () { var i = $("ssPass"); i.type = i.type === "password" ? "text" : "password"; });
   var mode = "login";
 
   function setMsg(text, type) {
@@ -76,6 +89,7 @@
     mode = m;
     document.querySelectorAll(".ssTabs button").forEach(function (b) { b.classList.toggle("on", b.dataset.t === m); });
     $("ssNameWrap").hidden = m !== "register";
+    overlay.classList.toggle("reg", m === "register");
     $("ssSubmit").textContent = m === "register" ? "Crear cuenta" : "Ingresar";
     $("ssPass").autocomplete = m === "register" ? "new-password" : "current-password";
     setMsg("");
@@ -111,11 +125,17 @@
   };
   function errText(e) { return ERR[e && e.code] || ("Error: " + ((e && e.message) || e)); }
 
-  Promise.all([
-    import(BASE + "firebase-app.js"),
-    import(BASE + "firebase-auth.js"),
-    import(BASE + "firebase-firestore.js")
-  ]).then(function (mods) {
+  // 1) SDK incluido en el proyecto (firebase-sdk.js): no depende de CDN externos.
+  // 2) Si no está, se descarga desde gstatic.com como respaldo.
+  var local = window.__SS_FIREBASE;
+  (local
+    ? Promise.resolve([local.app, local.auth, local.firestore])
+    : Promise.all([
+        import(BASE + "firebase-app.js"),
+        import(BASE + "firebase-auth.js"),
+        import(BASE + "firebase-firestore.js")
+      ])
+  ).then(function (mods) {
     start(mods[0], mods[1], mods[2]);
   }).catch(function (e) {
     $("ssLoading").innerHTML = '<b style="color:#9A3E4E">No se pudo cargar Firebase.</b><br>Revise su conexión a Internet. (' + (e && e.message || e) + ")";
@@ -304,11 +324,6 @@
       p.then(function () { $("ssPass").value = ""; })
        .catch(function (e) { setMsg(errText(e)); })
        .then(function () { btn.disabled = false; });
-    });
-
-    $("ssGoogle").addEventListener("click", function () {
-      setMsg("");
-      Au.signInWithPopup(auth, new Au.GoogleAuthProvider()).catch(function (e) { setMsg(errText(e)); });
     });
 
     $("ssForgot").addEventListener("click", function () {

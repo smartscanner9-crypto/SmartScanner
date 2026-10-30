@@ -115,6 +115,8 @@
     ["yogurt.png",      "yogurt yogur yogures yoghurt yogourt"],
     ["mortadela.png",   "mortadela"],
     ["lechuga.png",     "lechuga"],
+    ["chile.png",       "chile pimiento pimenton morron"],
+    ["zanahoria.png",   "zanahoria"],
     ["tomate.png",      "tomate tomatico"],
     ["huevo.png",       "huevo"],
     ["queso.png",       "queso"],

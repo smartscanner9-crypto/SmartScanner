@@ -14,6 +14,7 @@
 
   /* Productos con imagen (los mismos de item-emojis.js) y su categoría */
   var PRODUCTS = [
+    { name: "Chile", cat: "Vegetales" },
     { name: "Huevo", cat: "Otros" },
     { name: "Leche", cat: "Lácteos" },
     { name: "Lechuga", cat: "Vegetales" },
@@ -24,7 +25,8 @@
     { name: "Salsa", cat: "Otros" },
     { name: "Tomate", cat: "Vegetales" },
     { name: "Uva", cat: "Frutas" },
-    { name: "Yogurt", cat: "Lácteos" }
+    { name: "Yogurt", cat: "Lácteos" },
+    { name: "Zanahoria", cat: "Vegetales" }
   ];
   var CATS = ["Frutas", "Vegetales", "Bebidas", "Lácteos", "Carnes", "Otros"];
   var STORE = "ss_qr_custom";
